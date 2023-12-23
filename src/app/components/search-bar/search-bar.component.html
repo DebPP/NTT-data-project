@@ -1,0 +1,10 @@
+<form [formGroup]="form">
+    <div class="input-content col-md-12">
+        <div class="form-floating w-100">
+            <input type="search" class="form-control" id="floatingInput" placeholder="Search" formControlName="itemPesquisa">
+            <label for="Search">Search</label>
+        </div>
+        <button class="btn btn-primary flex-shrink-1" (click)="onSearch()" [disabled]="form.invalid">Search</button>
+    </div>
+</form>
+

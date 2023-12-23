@@ -1,0 +1,56 @@
+<!-- <app-title-subtitle [title]="defaultTitle" [subtitle]="defaultSubtitle" [align]="align"></app-title-subtitle> -->
+<div class="container pb-3">
+    <div class="d-flex justify-content-center">
+        <h5>See the review and everything about the best films and TV shows</h5>
+    </div>
+    <app-search-bar (search)="getTitle($event)"></app-search-bar>
+
+    <div class="row">
+
+    </div>
+    <div class="main-content">
+        @if(data && data.Response == "True"){
+        <div class="content-title d-flex flex-column align-items-start">
+            <div class="d-flex align-items-center">
+                <h1>{{data.Title}}</h1>
+                @if (!isFavorite) {
+                <button class="btn btn-secondary add-favortite" (click)="saveFavorite(data.imdbID)">
+                    <img src="../../../assets/img/heart-contorno.png">
+                </button>
+                } @else {
+                <button class="btn btn-secondary remove-favortite" (click)="removeFavorite(data.imdbID)">
+                    <img src="../../../assets/img/heart-silhueta.png">
+                </button>
+                }
+
+            </div>
+            <h6>{{data.Genre}}</h6>
+        </div>
+        <div class="d-flex flex-wrap teste justify-content-center">
+            <div>
+                <img class="img-data" [src]="data.Poster">
+            </div>
+            <div class="infos flex-column">
+                <p>{{data.Plot}}</p>
+                <small>Actors</small>
+                <p>{{data.Actors}}</p>
+                <small>Director</small>
+                <p>{{data.Director}}</p>
+                <small>Ratings</small>
+                <app-rating-stars [ratings]="data.Ratings"></app-rating-stars>
+            </div>
+
+        </div>
+
+        } @else if (data && data.Response == "False") {
+        <div class="d-flex justify-content-center">
+            <app-alerts [message]="data.Error" [type]="'warning'"></app-alerts>
+        </div>
+        }
+        @else if (!data) {
+        <div class="d-flex justify-content-center">
+            <app-alerts [message]="'What do you want to know today?'"></app-alerts>
+        </div>
+        }
+    </div>
+</div>

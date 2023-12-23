@@ -1,0 +1,25 @@
+.content {
+    background-color: var(--gray);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.warning{
+    background-color: #F8F3D6;
+    color: #967132;
+    border: 3px solid #967132;
+}
+.info{
+    background-color: #CDE8F5;
+    color: #70A1C4;
+    border: 3px solid #70A1C4;
+}
+.danger{
+    background-color: #ECC8C5;
+    color: #C45C5A;
+    border: 3px solid #C45C5A;
+}

@@ -1,0 +1,16 @@
+<div class="d-flex ratings flex-wrap">
+    @if (ratings.length > 0) {
+        @for (item of ratings; track $index) {
+            <div class="logo d-flex align-items-center flex-column">
+               
+                    <img *ngIf="item.Source === 'Internet Movie Database'" class="logo" src="../../../assets/img/imdb-logo.png">
+                    <img *ngIf="item.Source === 'Metacritic'" class="logo" src="../../../assets/img/metacritic-logo.png">
+                    <img *ngIf="item.Source === 'Rotten Tomatoes'" class="logo" src="../../../assets/img/rt-logo.png">
+                             
+                    <app-stars [rating]="item"></app-stars>
+            </div>
+
+        }
+    } @else { No rating }
+
+</div>

@@ -1,0 +1,32 @@
+.main-content{
+    .img-data {
+        margin-right: 10px;
+        height: 44vh;
+    }
+
+    p{
+        font-weight: 200;
+    }
+}
+.container {
+
+    h5 {
+        color: var(--gray-text);
+        font-weight: 200;
+    }
+}
+
+.content-title {
+    margin-top: 5px;
+    h1 {
+        color: var(--yellow);
+        margin-right: 10px;
+    }
+}
+
+.teste {
+    img, .infos {
+        flex: 1 1 300px;
+
+    }
+}
