@@ -1,7 +1,9 @@
-<div class="estrelas">
-    @for (i of stars; track $index) {
-        <label for="cm_star-{{i}}"><i class="fa"></i></label>
-        <input type="radio" id="cm_star-{{i}}" name="fb" [value]="i" [checked]="OnCheckStar(i)"/>
-    }
-    <small>{{rating.Value}}</small>
+<div class="d-flex align-items-center">
+    <div class="estrelas">
+        @for (i of stars; track $index) {
+        <label for="cm_star-{{rating.Value}}"><i class="fa"></i></label>
+        <input type="radio" id="cm_star-{{rating.Value}}" name="cm_star-{{rating.Value}}" [value]="i" [checked]="OnCheckStar(i)" />
+        }
+    </div>
+    <small class="rating-value">{{rating.Value}}</small>
 </div>

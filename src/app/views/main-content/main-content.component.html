@@ -27,15 +27,23 @@
             <h6>{{data.Genre}}</h6>
         </div>
         <div class="d-flex flex-wrap teste justify-content-center">
-            <div>
-                <img class="img-data" [src]="data.Poster">
-            </div>
+            @if (data.Poster !== "N/A") {
+                <div>
+                    <img class="img-data" [src]="data.Poster">
+                </div>
+            } 
             <div class="infos flex-column">
-                <p>{{data.Plot}}</p>
-                <small>Actors</small>
-                <p>{{data.Actors}}</p>
-                <small>Director</small>
-                <p>{{data.Director}}</p>
+                @if (data.Plot !== "N/A") {
+                    <p>{{data.Plot}}</p>
+                }
+                @if (data.Actors !== "N/A") {
+                    <small>Actors</small>
+                    <p>{{data.Actors}}</p>
+                }  
+                @if (data.Director !== "N/A") {
+                    <small>Director</small>
+                    <p>{{data.Director}}</p>
+                }
                 <small>Ratings</small>
                 <app-rating-stars [ratings]="data.Ratings"></app-rating-stars>
             </div>

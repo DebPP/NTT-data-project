@@ -1,9 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { StarsComponent } from '../stars/stars.component';
-import { ImbdApiModel } from '../../models/imdb-api.model';
-import { RatingsModel } from '../../models/ratings.model';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
+import { StarsComponent } from '../stars/stars.component';
+import { RatingsModel } from '../../models/ratings.model';
 
 @Component({
 	selector: 'app-rating-stars',
@@ -15,6 +13,4 @@ import { BrowserModule } from '@angular/platform-browser';
 export class RatingStarsComponent {
 
 	@Input() ratings: Array<RatingsModel>;
-
-	
 }

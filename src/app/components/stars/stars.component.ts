@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, SimpleChange } from '@angular/core';
 import { RatingsModel } from '../../models/ratings.model';
 
 @Component({
@@ -10,25 +10,24 @@ import { RatingsModel } from '../../models/ratings.model';
 })
 export class StarsComponent {
 	@Input() rating: RatingsModel;
-
 	stars = [1, 2, 3, 4, 5];
 
 	OnCheckStar(starNumber: number): boolean {
-		switch(this.rating.Source) {
-			case "Internet Movie Database":
-				return this.ImdbFormat(starNumber);
-			case "Rotten Tomatoes":
-				return  this.rtFormat(starNumber);
-				case "Metacritic":
-				return  this.metaFormat(starNumber);
-			default: return false;
+		if (this.rating.Source === "Internet Movie Database") {
+			return this.ImdbFormat(starNumber);
+		} else if (this.rating.Source === "Rotten Tomatoes") {
+			return this.rtFormat(starNumber);
+		} else if (this.rating.Source === "Metacritic") {
+			return this.metaFormat(starNumber);
+		} else {
+			return false;
 		}
 	}
 
 	ImdbFormat(starNumber: number): boolean {
 		let aux = this.rating.Value.split("/");
-		let value = aux[0];
-		if (this.rating.Value !== "N/A" && ((Math.floor(+value)/2) > starNumber)) {
+		let value = Math.floor(+aux[0]) / 2;
+		if (value >= starNumber) {
 			return true;
 		} else {
 			return false;
@@ -37,9 +36,8 @@ export class StarsComponent {
 
 	rtFormat(starNumber: number): boolean {
 		let aux = this.rating.Value.split("%");
-		let value = aux[0];
-		let format = (+value*5)/100;
-		if (this.rating.Value !== "N/A" && format > starNumber) {
+		let value = (+aux[0] * 5) / 100;
+		if (value > starNumber) {
 			return true;
 		} else {
 			return false;
@@ -48,8 +46,8 @@ export class StarsComponent {
 
 	metaFormat(starNumber: number): boolean {
 		let aux = this.rating.Value.split("/");
-		let value = aux[0];
-		if (this.rating.Value !== "N/A" && ((+value*5)/100 > starNumber)) {
+		let value = (+aux[0] * 5) / 100;
+		if (value > starNumber) {
 			return true;
 		} else {
 			return false;

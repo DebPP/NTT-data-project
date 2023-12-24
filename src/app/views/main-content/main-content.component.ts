@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchBarComponent } from '../../components/search-bar/search-bar.component';
 import { InitService } from '../../services/init.service';
 import { ImbdApiModel } from '../../models/imdb-api.model';
@@ -14,7 +14,7 @@ import { AlertsComponent } from '../../components/alerts/alerts.component';
 	templateUrl: './main-content.component.html',
 	styleUrl: './main-content.component.scss'
 })
-export class MainContentComponent implements OnInit {
+export class MainContentComponent {
 	data: ImbdApiModel;
 	align: "right" | "center" | "left" = "center";
 	defaultTitle: string = "Guide Flix";
@@ -23,10 +23,6 @@ export class MainContentComponent implements OnInit {
 	isFavorite: boolean = false;
 
 	constructor(private service: InitService) { }
-
-	ngOnInit(): void {
-
-	}
 
 	getTitle(event: string): void {
 		if (typeof event === "string") {
